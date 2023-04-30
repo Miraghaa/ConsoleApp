@@ -273,13 +273,11 @@ namespace ConsoleApp.Services.Services.Implementations
                 string adress = Console.ReadLine();
                 Console.WriteLine("Add phone");
                 string phonenumber = Console.ReadLine();
-                Console.WriteLine("Add birthdate");
-                string birthdate = Console.ReadLine();
                 Console.WriteLine("Add books");
                 int.TryParse(Console.ReadLine(), out int books);
 
 
-                string message = await _bookWriterService.CreateAsync(name, surname, birthdate, phonenumber, adress, books);
+                string message = await _bookWriterService.UpdateAsync(Id,name,surname,adress,books,phonenumber);
                 Console.WriteLine(message);
             }
 

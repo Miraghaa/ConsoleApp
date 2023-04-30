@@ -9,7 +9,7 @@ namespace ConsoleApp.Services.Services.Implementations
 {
     public class BookWriterService : IBookWriterService
     {
-        private readonly static BookWriterRepository _repository = new BookWriterRepository();
+        private readonly  BookWriterRepository _repository = new BookWriterRepository();
         public async Task<string> CreateAsync(string name, string surname, string birthdate, string phonenumber, string adress, int books)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -24,7 +24,7 @@ namespace ConsoleApp.Services.Services.Implementations
             bool result1 = regex1.IsMatch(phonenumber);
             if (!result1)
                 return "The phone number is not correct";
-            Regex regex = new Regex(@"^\d{2}.\d{2}.\d{4}$");
+            Regex regex = new Regex(@"^([012]\d|30|31).(0\d|10|11|12).\d{4}$");
             bool result = regex.IsMatch(birthdate);
             if (!result)
                 return "Date of birth is incorrect";
@@ -52,7 +52,7 @@ namespace ConsoleApp.Services.Services.Implementations
 
             return "Deleted";
         }
-        public async Task<string> UpdateAsync(int id, string name, string surname, string adress, int books, string phonenumber)
+        public async Task<string> UpdateAsync(int id, string name, string surname, string adress, int books,string phonenumber)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             if (string.IsNullOrWhiteSpace(name))

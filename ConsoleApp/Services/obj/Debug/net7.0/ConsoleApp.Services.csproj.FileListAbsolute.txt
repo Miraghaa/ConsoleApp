@@ -1,0 +1,17 @@
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.csproj.AssemblyReference.cache
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.AssemblyInfoInputs.cache
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.AssemblyInfo.cs
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\ConsoleApp\Services\bin\Debug\net7.0\ConsoleApp.Services.deps.json
+C:\Users\USER\source\repos\ConsoleApp\Services\bin\Debug\net7.0\ConsoleApp.Services.dll
+C:\Users\USER\source\repos\ConsoleApp\Services\bin\Debug\net7.0\ConsoleApp.Services.pdb
+C:\Users\USER\source\repos\ConsoleApp\Services\bin\Debug\net7.0\ConsoleApp.Core.dll
+C:\Users\USER\source\repos\ConsoleApp\Services\bin\Debug\net7.0\ConsoleApp.Data.dll
+C:\Users\USER\source\repos\ConsoleApp\Services\bin\Debug\net7.0\ConsoleApp.Data.pdb
+C:\Users\USER\source\repos\ConsoleApp\Services\bin\Debug\net7.0\ConsoleApp.Core.pdb
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.csproj.CopyComplete
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.dll
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\refint\ConsoleApp.Services.dll
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ConsoleApp.Services.pdb
+C:\Users\USER\source\repos\ConsoleApp\Services\obj\Debug\net7.0\ref\ConsoleApp.Services.dll

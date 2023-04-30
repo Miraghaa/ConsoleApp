@@ -7,7 +7,7 @@ namespace ConsoleApp.Core.Models
     {
         private static int _id;
         public string Surname { get; set; }
-        public int Birthdate {get; set;}
+        public string  Birthdate {get; set;}
         public string Phonenumber { get; set;}
         public string Adress { get; set; }
         public int Books { get; set; }
@@ -15,7 +15,7 @@ namespace ConsoleApp.Core.Models
         public List<Book> Bookss;
 
 
-        public BookWriter(string name,string surname,int birthdate,string phonenumber,string adress,int books)
+        public BookWriter(string name,string surname,string birthdate,string phonenumber,string adress,int books)
         {
             _id++;
             Id = _id;
@@ -29,6 +29,11 @@ namespace ConsoleApp.Core.Models
             CreatedDate = DateTime.UtcNow.AddHours(4);
             UpdatedDate = DateTime.UtcNow.AddHours(4);
             
+        }
+        public override string ToString()
+        {
+            return $"Name: {Name}, Surname: {Surname} , Birthdate: {Birthdate}, Phone: {Phonenumber}, Adress: {Adress}, Books:{Books} , CreateDate: {CreatedDate}, UpdateDate: {UpdatedDate}";
+
         }
     }
 }

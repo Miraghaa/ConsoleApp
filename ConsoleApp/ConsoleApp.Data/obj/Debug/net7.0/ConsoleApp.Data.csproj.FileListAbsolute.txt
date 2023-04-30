@@ -1,0 +1,15 @@
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\bin\Debug\net7.0\ConsoleApp.Data.deps.json
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\bin\Debug\net7.0\ConsoleApp.Data.dll
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\bin\Debug\net7.0\ConsoleApp.Data.pdb
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\bin\Debug\net7.0\ConsoleApp.Core.dll
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\bin\Debug\net7.0\ConsoleApp.Core.pdb
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.csproj.AssemblyReference.cache
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.AssemblyInfoInputs.cache
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.AssemblyInfo.cs
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.csproj.CopyComplete
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.dll
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\refint\ConsoleApp.Data.dll
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ConsoleApp.Data.pdb
+C:\Users\USER\source\repos\ConsoleApp\ConsoleApp.Data\obj\Debug\net7.0\ref\ConsoleApp.Data.dll

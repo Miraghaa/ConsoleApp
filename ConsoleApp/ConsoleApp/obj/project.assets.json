@@ -1,11 +1,66 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "ConsoleApp.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ConsoleApp.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ConsoleApp.Core.dll": {}
+        }
+      },
+      "ConsoleApp.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ConsoleApp.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ConsoleApp.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ConsoleApp.Data.dll": {}
+        }
+      },
+      "ConsoleApp.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ConsoleApp.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ConsoleApp.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ConsoleApp.Services.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ConsoleApp.Core/1.0.0": {
+      "type": "project",
+      "path": "../ConsoleApp.Core/ConsoleApp.Core.csproj",
+      "msbuildProject": "../ConsoleApp.Core/ConsoleApp.Core.csproj"
+    },
+    "ConsoleApp.Data/1.0.0": {
+      "type": "project",
+      "path": "../ConsoleApp.Data/ConsoleApp.Data.csproj",
+      "msbuildProject": "../ConsoleApp.Data/ConsoleApp.Data.csproj"
+    },
+    "ConsoleApp.Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/ConsoleApp.Services.csproj",
+      "msbuildProject": "../Services/ConsoleApp.Services.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "ConsoleApp.Services >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\USER\\.nuget\\packages\\": {}
@@ -33,7 +88,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\USER\\source\\repos\\ConsoleApp\\Services\\ConsoleApp.Services.csproj": {
+              "projectPath": "C:\\Users\\USER\\source\\repos\\ConsoleApp\\Services\\ConsoleApp.Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

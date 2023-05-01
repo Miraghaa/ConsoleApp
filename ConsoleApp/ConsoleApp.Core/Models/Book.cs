@@ -47,7 +47,7 @@ namespace ConsoleApp.Core.Models
             }
 
 
-            return $"Name: {Name}, NumberOfTheBook: {NumberOfTheBook}, BookInformation: {BookInformation}, ,Price: {Price}, BookInStock{BookInStock}, Language: {Language}, Category: {Category}, BookWriter: {bookWriter} ";
+            return $"Name: {Name}, NumberOfTheBook: {NumberOfTheBook}, BookInformation: {BookInformation}, ,Price: {Price}, BookInStock{BookInStock}, Language: {Language}, Category: {Category}, ";
         }
     }
 

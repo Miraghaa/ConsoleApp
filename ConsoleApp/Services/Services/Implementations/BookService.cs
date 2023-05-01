@@ -117,8 +117,8 @@ namespace ConsoleApp.Services.Services.Implementations
                 return "There is no such writer";
             
            Book book = bookWriter.Bookss.FirstOrDefault(x => x.Id == bookId);
-            Console.ForegroundColor = ConsoleColor.Green;
-            
+            Console.ForegroundColor = ConsoleColor.Green;       
+           
             if (book == null)
                 return "This book not found";
 

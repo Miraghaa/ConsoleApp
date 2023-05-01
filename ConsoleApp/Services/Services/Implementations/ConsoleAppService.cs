@@ -5,6 +5,7 @@ using ConsoleApp.Core.Models;
 using ConsoleApp.Core.Models.Base;
 using ConsoleApp.Services.Services.Interfaces;
 using System.Reflection.Metadata;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ConsoleApp.Services.Services.Implementations
 {
@@ -14,10 +15,10 @@ namespace ConsoleApp.Services.Services.Implementations
 
         private User[] Users = { new User { UserName = "Miri", Password = "Miriss" } };
 
-        private  BookWriterService _bookWriterService = new BookWriterService();
-        private  BookService _bookService = new BookService();
-        
-        public async Task <bool> Login()
+        private BookWriterService _bookWriterService = new BookWriterService();
+        private BookService _bookService = new BookService();
+
+        public async Task<bool> Login()
         {
             Console.WriteLine("Add username");
             string username = Console.ReadLine();
@@ -35,19 +36,29 @@ namespace ConsoleApp.Services.Services.Implementations
             }
             return IsAdmin;
 
-           
+
         }
 
-             public async Task ShowAdmin()
+        public async Task ShowAdmin()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            string sentence = "Welcome to my first mini project";
+            string title = @"
 
-            foreach (var item in sentence)
+        ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗     █████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗
+        ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝    ██╔══██╗██╔══██╗████╗ ████║██║████╗  ██║
+        ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗      ███████║██║  ██║██╔████╔██║██║██╔██╗ ██║
+        ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝      ██╔══██║██║  ██║██║╚██╔╝██║██║██║╚██╗██║
+        ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗    ██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║
+         ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝    ╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝
+";
+            foreach (var item in title)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(1);
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write(item);
             }
+            
+
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine();
             Console.WriteLine("0. Close app");
             Console.WriteLine("1. Create book writer");
@@ -115,7 +126,8 @@ namespace ConsoleApp.Services.Services.Implementations
                         Console.Clear();
                         await BuyBook();
                         break;
-                        default: Console.WriteLine("csd");
+                    default:
+                        Console.WriteLine("csd");
                         break;
 
 
@@ -140,16 +152,19 @@ namespace ConsoleApp.Services.Services.Implementations
             }
 
         }
-             public async Task ShowUser()
+        public async Task ShowUser()
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             string sentence = "Welcome to my first mini project";
 
             foreach (var item in sentence)
             {
-                Thread.Sleep(200);
+                Thread.Sleep(100);
                 Console.Write(item);
             }
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
             Console.WriteLine();
             Console.WriteLine("0. Close app");
             Console.WriteLine("1. Show book writer");
@@ -164,7 +179,7 @@ namespace ConsoleApp.Services.Services.Implementations
             while (Requeest != "0")
             {
                 switch (Requeest)
-                {  
+                {
                     case "1":
                         Console.Clear();
                         await ShowBookWriter();
@@ -186,7 +201,7 @@ namespace ConsoleApp.Services.Services.Implementations
                         await BuyBook();
                         break;
                     default:
-                        Console.ForegroundColor= ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("There is no such book and writer");
                         break;
 
@@ -205,213 +220,316 @@ namespace ConsoleApp.Services.Services.Implementations
                 Requeest = Console.ReadLine();
             }
         }
-            private async Task CreateBookWriter()
+        private async Task CreateBookWriter()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Add name");
+            string name = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(name))
             {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Add name");
-                string name = Console.ReadLine();
-                Console.WriteLine("Add surname");
-                string surname = Console.ReadLine();
-                Console.WriteLine("Add adress");
-                string adress = Console.ReadLine();
-                Console.WriteLine("Add phone");
-                string phonenumber = Console.ReadLine();
-                Console.WriteLine("Add birthdate");
-                string birthdate = Console.ReadLine();
-                Console.WriteLine("Add books");
-                int.TryParse(Console.ReadLine(), out int books);
-
-
-                string message = await _bookWriterService.CreateAsync(name, surname, birthdate, phonenumber, adress, books);
-                Console.WriteLine(message);
+                Console.WriteLine("Enter a valid name");
+                name = Console.ReadLine();
             }
-
-            private async Task ShowBookWriter()
+            Console.WriteLine("Add surname");
+            string surname = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(surname))
             {
-                await _bookWriterService.GetAllAsync();
+                Console.WriteLine("Enter a valid surname");
+                surname = Console.ReadLine();
             }
-
-            private async Task ShowBookWriterById()
+            Console.WriteLine("Add adress");
+            string adress = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(adress))
             {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Add BookWriter id");
-                int.TryParse(Console.ReadLine(), out int id);
-
-                BookWriter bookWriter = await _bookWriterService.GetAsync(id);
-                if (bookWriter != null)
-                {
-                    Console.WriteLine(bookWriter);
-                }
+                Console.WriteLine("Enter the correct address");
+                adress = Console.ReadLine();
             }
-
-            private async Task ShowBookWriterBooks()
+            Console.WriteLine("Add phone");
+            string phonenumber = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(phonenumber))
             {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Add BookWriter id");
-                int.TryParse(Console.ReadLine(), out int id);
-
-                List<Book> books = await _bookWriterService.GetAllBooksAsync(id);
-                if (books != null)
-                {
-                    foreach (Book book in books)
-                    {
-                        Console.WriteLine(book);
-                        Console.WriteLine("---------");
-                    }
-                }
+                Console.WriteLine("Enter the correct phonenumber");
+                phonenumber = Console.ReadLine();
             }
-            private async Task UpdateBookWriter()
+            Console.WriteLine("Add birthdate");
+            string birthdate = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(birthdate))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Add BookWriter id");
-                int.TryParse(Console.ReadLine(), out int Id);
-                Console.WriteLine("Add name");
-                string name = Console.ReadLine();
-                Console.WriteLine("Add surname");
-                string surname = Console.ReadLine();
-                Console.WriteLine("Add adress");
-                string adress = Console.ReadLine();
-                Console.WriteLine("Add phone");
-                string phonenumber = Console.ReadLine();
-                Console.WriteLine("Add books");
-                int.TryParse(Console.ReadLine(), out int books);
-
-
-                string message = await _bookWriterService.UpdateAsync(Id,name,surname,adress,books,phonenumber);
-                Console.WriteLine(message);
+                Console.WriteLine("Enter the correct birthdate");
+                birthdate = Console.ReadLine();
             }
-
-            private async Task RemoveBookWriter()
+            Console.WriteLine("Add books");
+            int.TryParse(Console.ReadLine(), out int books);
+            while (books == 0)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Add Book writer id");
-                int.TryParse(Console.ReadLine(), out int Id);
-
-                string message = await _bookWriterService.DeleteAsync(Id);
-                Console.WriteLine(message);
+                Console.WriteLine("The book number does not match");
+                int.TryParse(Console.ReadLine(), out books);
             }
+            string message = await _bookWriterService.CreateAsync(name, surname, birthdate, phonenumber, adress, books);
+            Console.WriteLine(message);
+        }
 
-            private async Task CreateBook()
+        private async Task ShowBookWriter()
+        {
+            await _bookWriterService.GetAllAsync();
+        }
+
+        private async Task ShowBookWriterById()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Add BookWriter id");
+            int.TryParse(Console.ReadLine(), out int id);
+
+            BookWriter bookWriter = await _bookWriterService.GetAsync(id);
+            if (bookWriter != null)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Add Book Writer id");
-                int.TryParse(Console.ReadLine(), out int id);
-                Console.WriteLine("Book name");
-                string name = Console.ReadLine();
-                Console.WriteLine("Note the number of the book");
-                int.TryParse(Console.ReadLine(), out int numberofthebook);
-                Console.WriteLine("Record information about the book");
-                string information = Console.ReadLine();
-                Console.WriteLine("Book price");
-                int.TryParse(Console.ReadLine(), out int price);
-                Console.WriteLine("Book discount price");
-                int.TryParse(Console.ReadLine(), out int discountprice);
-                Console.WriteLine("Instock?");
-                bool.TryParse(Console.ReadLine(), out bool bookInStock);
-                BookLanguage language;
-                Console.WriteLine("Choose book language");
-                foreach (var item in Enum.GetValues(typeof(BookLanguage)))
-                {
-                    Console.WriteLine((int)item + " " + item);
-                }
-                int.TryParse(Console.ReadLine(), out int languageindex);
-                var result = Enum.GetName(typeof(BookLanguage), languageindex);
-
-                while (result == null)
-                {
-                    Console.WriteLine("Select the language of the book");
-                    int.TryParse(Console.ReadLine(), out languageindex);
-                    result = Enum.GetName(typeof(BookLanguage), languageindex);
-                }
-                language = (BookLanguage)languageindex;
-
-                BookCategory category;
-                Console.WriteLine("Choose category");
-                foreach (var item in Enum.GetValues(typeof(BookCategory)))
-                {
-                    Console.WriteLine((int)item + " " + item);
-                }
-                int.TryParse(Console.ReadLine(), out int categoryindex);
-                result = Enum.GetName(typeof(BookCategory), categoryindex);
-
-                while (result == null)
-                {
-                    Console.WriteLine("Select the category of the book");
-                    int.TryParse(Console.ReadLine(), out categoryindex);
-                    result = Enum.GetName(typeof(BookCategory), categoryindex);
-                }
-                category = (BookCategory)categoryindex;
-
-                string message = await _bookService.CreateAsync(id, name, numberofthebook, information, price, discountprice, bookInStock, language, category);
-                Console.WriteLine(message);
+                Console.WriteLine(bookWriter);
             }
+        }
 
-            private async Task UpdateBook()
+        private async Task ShowBookWriterBooks()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Add BookWriter id");
+            int.TryParse(Console.ReadLine(), out int id);
+
+            List<Book> books = await _bookWriterService.GetAllBooksAsync(id);
+            if (books != null)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Add Book Writer id");
-                int.TryParse(Console.ReadLine(), out int bookwriterId);
-                Console.WriteLine("Add book id");
-                int.TryParse(Console.ReadLine(), out int bookId);
-                Console.WriteLine("Add name");
-                string name = Console.ReadLine();
-                Console.WriteLine("Note the number of the book");
-                int.TryParse(Console.ReadLine(), out int numberofthebook);
-                Console.WriteLine("Record information about the book");
-                string information = Console.ReadLine();
-                Console.WriteLine("Add price");
-                int.TryParse(Console.ReadLine(), out int price);
-                Console.WriteLine("Add discount price");
-                int.TryParse(Console.ReadLine(), out int discountprice);
-                bool.TryParse(Console.ReadLine(),out bool bookInStock);
-
-
-                string message2 = await _bookService.UpdateAsync(bookwriterId, bookId, name, numberofthebook, price, discountprice, information, bookInStock);
-                Console.WriteLine(message2);
-            }
-            private async Task GetBookByBookWriter()
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Add book writer id");
-                int.TryParse(Console.ReadLine(), out int bookwriterId);
-                Console.WriteLine("Add book  id");
-                int.TryParse(Console.ReadLine(), out int bookId);
-
-                Book book = await _bookService.GetAsync(bookwriterId, bookId);
-
-                if (book != null)
+                foreach (Book book in books)
                 {
                     Console.WriteLine(book);
+                    Console.WriteLine("---------");
                 }
-
             }
-            private async Task RemoveBook()
+        }
+        private async Task UpdateBookWriter()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Add BookWriter id");
+            int.TryParse(Console.ReadLine(), out int Id);
+            Console.WriteLine("Add name");
+            string name = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(name))
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Add book writer id");
-                int.TryParse(Console.ReadLine(), out int bookwriterId);
-                Console.WriteLine("Add book  id");
-                int.TryParse(Console.ReadLine(), out int bookId);
-
-                string message = await _bookService.DeleteAsync(bookwriterId, bookId);
-                Console.WriteLine(message);
+                Console.WriteLine("Enter a valid name");
+                name = Console.ReadLine();
             }
-            private async Task BuyBook()
+            Console.WriteLine("Add surname");
+            string surname = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(surname))
             {
-            
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Add book writer id");
-                int.TryParse(Console.ReadLine(), out int bookwriterId);
-                Console.WriteLine("Add book  id");
-                int.TryParse(Console.ReadLine(), out int bookId);
-                 bool.TryParse(Console.ReadLine(), out bool bookInStock);            
-              
-              string message = await _bookService.BuyBookAsync(bookwriterId, bookId, bookInStock);
-                Console.WriteLine(message);
+                Console.WriteLine("Enter a valid surname");
+                surname = Console.ReadLine();
+            }
+            Console.WriteLine("Add adress");
+            string adress = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(adress))
+            {
+                Console.WriteLine("Enter a valid adress");
+                adress = Console.ReadLine();
+            }
+            Console.WriteLine("Add phone");
+            string phonenumber = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(phonenumber))
+            {
+                Console.WriteLine("Enter a valid ");
+                phonenumber = Console.ReadLine();
+            }
+            Console.WriteLine("Add books");
+            int.TryParse(Console.ReadLine(), out int books);
+            while (books == 0)
+            {
+                Console.WriteLine("The book number does not match");
+                int.TryParse(Console.ReadLine(), out books);
             }
 
 
-        
+            string message = await _bookWriterService.UpdateAsync(Id, name, surname, adress, books, phonenumber);
+            Console.WriteLine(message);
+        }
+
+        private async Task RemoveBookWriter()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Add Book writer id");
+            int.TryParse(Console.ReadLine(), out int Id);
+
+            string message = await _bookWriterService.DeleteAsync(Id);
+            Console.WriteLine(message);
+        }
+
+        private async Task CreateBook()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Add Book Writer id");
+            int.TryParse(Console.ReadLine(), out int id);
+            Console.WriteLine("Book name");
+            string name = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Enter a valid name");
+                name = Console.ReadLine();
+            }
+            Console.WriteLine("Note the number of the book");
+            int.TryParse(Console.ReadLine(), out int numberofthebook);
+            while (numberofthebook == 0)
+            {
+                Console.WriteLine("The value is not true");
+                int.TryParse(Console.ReadLine(), out numberofthebook);
+            }
+            Console.WriteLine("Record information about the book");
+            string information = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(information))
+            {
+                Console.WriteLine("Enter the correct information");
+                information = Console.ReadLine();
+            }
+            Console.WriteLine("Book price");
+            int.TryParse(Console.ReadLine(), out int price);
+            while (price == 0)
+            {
+                Console.WriteLine("The value is not true");
+                int.TryParse(Console.ReadLine(), out price);
+            }
+            Console.WriteLine("Book discount price");
+            int.TryParse(Console.ReadLine(), out int discountprice);
+            while (discountprice == 0)
+            {
+                Console.WriteLine("The value is not true");
+                int.TryParse(Console.ReadLine(), out discountprice);
+            }
+            Console.WriteLine("Instock?");
+            bool.TryParse(Console.ReadLine(), out bool bookInStock);
+            BookLanguage language;
+            Console.WriteLine("Choose book language");
+            foreach (var item in Enum.GetValues(typeof(BookLanguage)))
+            {
+                Console.WriteLine((int)item + " " + item);
+            }
+            int.TryParse(Console.ReadLine(), out int languageindex);
+            var result = Enum.GetName(typeof(BookLanguage), languageindex);
+
+            while (result == null)
+            {
+                Console.WriteLine("Select the language of the book");
+                int.TryParse(Console.ReadLine(), out languageindex);
+                result = Enum.GetName(typeof(BookLanguage), languageindex);
+            }
+            language = (BookLanguage)languageindex;
+
+            BookCategory category;
+            Console.WriteLine("Choose category");
+            foreach (var item in Enum.GetValues(typeof(BookCategory)))
+            {
+                Console.WriteLine((int)item + " " + item);
+            }
+            int.TryParse(Console.ReadLine(), out int categoryindex);
+            result = Enum.GetName(typeof(BookCategory), categoryindex);
+
+            while (result == null)
+            {
+                Console.WriteLine("Select the category of the book");
+                int.TryParse(Console.ReadLine(), out categoryindex);
+                result = Enum.GetName(typeof(BookCategory), categoryindex);
+            }
+            category = (BookCategory)categoryindex;
+
+            string message = await _bookService.CreateAsync(id, name, numberofthebook, information, price, discountprice, bookInStock, language, category);
+            Console.WriteLine(message);
+        }
+
+        private async Task UpdateBook()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Add Book Writer id");
+            int.TryParse(Console.ReadLine(), out int bookwriterId);
+            Console.WriteLine("Add book id");
+            int.TryParse(Console.ReadLine(), out int bookId);
+            Console.WriteLine("Add name");
+            string name = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Enter a valid name");
+                name = Console.ReadLine();
+            }
+            Console.WriteLine("Note the number of the book");
+            int.TryParse(Console.ReadLine(), out int numberofthebook);
+            while (numberofthebook == 0)
+            {
+                Console.WriteLine("The value is not true");
+                int.TryParse(Console.ReadLine(), out numberofthebook);
+            }
+            Console.WriteLine("Record information about the book");
+            string information = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(information))
+            {
+                Console.WriteLine("Enter the correct information");
+                information = Console.ReadLine();
+            }
+            Console.WriteLine("Add price");
+            int.TryParse(Console.ReadLine(), out int price);
+            while (price == 0)
+            {
+                Console.WriteLine("The value is not true");
+                int.TryParse(Console.ReadLine(), out price);
+            }
+            Console.WriteLine("Add discount price");
+            int.TryParse(Console.ReadLine(), out int discountprice);
+            while (discountprice == 0)
+            {
+                Console.WriteLine("The value is not true");
+                int.TryParse(Console.ReadLine(), out discountprice);
+            }
+            bool.TryParse(Console.ReadLine(), out bool bookInStock);
+
+
+            string message2 = await _bookService.UpdateAsync(bookwriterId, bookId, name, numberofthebook, price, discountprice, information, bookInStock);
+            Console.WriteLine(message2);
+        }
+        private async Task GetBookByBookWriter()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Add book writer id");
+            int.TryParse(Console.ReadLine(), out int bookwriterId);
+            Console.WriteLine("Add book  id");
+            int.TryParse(Console.ReadLine(), out int bookId);
+
+            Book book = await _bookService.GetAsync(bookwriterId, bookId);
+
+            if (book != null)
+            {
+                Console.WriteLine(book);
+            }
+
+        }
+        private async Task RemoveBook()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Add book writer id");
+            int.TryParse(Console.ReadLine(), out int bookwriterId);
+            Console.WriteLine("Add book  id");
+            int.TryParse(Console.ReadLine(), out int bookId);
+
+            string message = await _bookService.DeleteAsync(bookwriterId, bookId);
+            Console.WriteLine(message);
+        }
+        private async Task BuyBook()
+        {
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Add book writer id");
+            int.TryParse(Console.ReadLine(), out int bookwriterId);
+            Console.WriteLine("Add book  id");
+            int.TryParse(Console.ReadLine(), out int bookId);
+            bool.TryParse(Console.ReadLine(), out bool bookInStock);
+
+            string message = await _bookService.BuyBookAsync(bookwriterId, bookId, bookInStock);
+            Console.WriteLine(message);
+        }
+
+
+
 
     }
 }

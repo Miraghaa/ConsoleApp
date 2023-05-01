@@ -8,7 +8,7 @@ namespace ConsoleApp.Services.Services.Implementations
         {
             ConsoleAppService consoleAppService = new ConsoleAppService();
 
-            Console.WriteLine("1.As Admin");
+            Console.WriteLine("1. As Admin");
             Console.WriteLine("2. As User");
 
             string Request = Console.ReadLine();

@@ -21,7 +21,7 @@ namespace ConsoleApp.Core.Models
         
 
 
-        public Book(string name, int numberofthebook, string information, double price, double discountprice, BookCategory category, BookLanguage language, BookWriter bookWriter  )
+        public Book(string name, int numberofthebook, string information, double price, double discountprice, bool bookInStock, BookCategory category, BookLanguage language, BookWriter bookWriter  )
         {
             _id++;
             Id = _id;
@@ -30,6 +30,7 @@ namespace ConsoleApp.Core.Models
             BookInformation=information;
             Price = price;
             DiscountPrice = discountprice;
+            BookInStock = bookInStock;
             Language = language;
             Category = category;
             CreatedDate = DateTime.Now;
@@ -42,11 +43,11 @@ namespace ConsoleApp.Core.Models
 
             if (DiscountPrice < Price)
             {
-                return $"There is  {Price - DiscountPrice} discount   Name: {Name}, NumberOfTheBook: {NumberOfTheBook}, BookInformation: {BookInformation}, ,Price: {DiscountPrice}, Language: {Language}, Category: {Category}, BookWriter: {bookWriter} ";
+                return $"There is  {Price - DiscountPrice} DiscountPrice   Name: {Name}, NumberOfTheBook: {NumberOfTheBook}, BookInformation: {BookInformation}, Price: {DiscountPrice}, BookInStock:{BookInStock}, Language: {Language}, Category: {Category}, BookWriter: {bookWriter} ";
             }
 
 
-            return $"Name: {Name}, NumberOfTheBook: {NumberOfTheBook}, BookInformation: {BookInformation}, ,Price: {Price}, Language: {Language}, Category: {Category}, BookWriter: {bookWriter} ";
+            return $"Name: {Name}, NumberOfTheBook: {NumberOfTheBook}, BookInformation: {BookInformation}, ,Price: {Price}, BookInStock{BookInStock}, Language: {Language}, Category: {Category}, BookWriter: {bookWriter} ";
         }
     }
 

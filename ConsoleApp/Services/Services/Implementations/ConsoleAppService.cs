@@ -306,6 +306,8 @@ namespace ConsoleApp.Services.Services.Implementations
                 int.TryParse(Console.ReadLine(), out int price);
                 Console.WriteLine("Book discount price");
                 int.TryParse(Console.ReadLine(), out int discountprice);
+                Console.WriteLine("Instock?");
+                bool.TryParse(Console.ReadLine(), out bool bookInStock);
                 BookLanguage language;
                 Console.WriteLine("Choose book language");
                 foreach (var item in Enum.GetValues(typeof(BookLanguage)))
@@ -340,7 +342,7 @@ namespace ConsoleApp.Services.Services.Implementations
                 }
                 category = (BookCategory)categoryindex;
 
-                string message = await _bookService.CreateAsync(id, name, numberofthebook, information, price, discountprice, language, category);
+                string message = await _bookService.CreateAsync(id, name, numberofthebook, information, price, discountprice, bookInStock, language, category);
                 Console.WriteLine(message);
             }
 
@@ -361,9 +363,10 @@ namespace ConsoleApp.Services.Services.Implementations
                 int.TryParse(Console.ReadLine(), out int price);
                 Console.WriteLine("Add discount price");
                 int.TryParse(Console.ReadLine(), out int discountprice);
+                bool.TryParse(Console.ReadLine(),out bool bookInStock);
 
 
-                string message2 = await _bookService.UpdateAsync(bookwriterId, bookId, name, numberofthebook, price, discountprice, information);
+                string message2 = await _bookService.UpdateAsync(bookwriterId, bookId, name, numberofthebook, price, discountprice, information, bookInStock);
                 Console.WriteLine(message2);
             }
             private async Task GetBookByBookWriter()
@@ -401,8 +404,9 @@ namespace ConsoleApp.Services.Services.Implementations
                 int.TryParse(Console.ReadLine(), out int bookwriterId);
                 Console.WriteLine("Add book  id");
                 int.TryParse(Console.ReadLine(), out int bookId);
-
-                string message = await _bookService.BuyBook(bookwriterId, bookId);
+                 bool.TryParse(Console.ReadLine(), out bool bookInStock);            
+              
+              string message = await _bookService.BuyBookAsync(bookwriterId, bookId, bookInStock);
                 Console.WriteLine(message);
             }
 
